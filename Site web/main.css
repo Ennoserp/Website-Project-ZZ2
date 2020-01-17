@@ -1,0 +1,85 @@
+h1{
+    color:navy;
+    font-family: cursive;
+    text-align: center;
+}
+
+b{
+    color:cornflowerblue;
+    font-family: monospace;
+}
+.greentext
+{
+    color:#008800;
+    font-weight: bold;
+}
+
+#page1{
+    background-image: url(images/neige.jpg);
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+
+li{
+    font-size: 30px;
+}
+
+h1:hover{
+    background-color: red;
+    text-decoration: underline;
+    font-size: 500%;
+}
+
+.tableau{
+    background-color: #AAFA;
+}
+
+.velkoz
+{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#mdr
+{
+    width: 50%;
+    margin-top: 1em;
+    padding: 10px;
+    border: 8px solid #0088dd;
+}
+
+
+/*     PAGE 2   */
+/****************/
+#titre
+{
+    background-color: #558855;
+    width: 600px;
+    height: 50px;
+}
+
+#contenu
+{
+    background-color: #FFFFCC;
+    width: 500px;
+    height: 400px;
+    float:left;
+    /*display: inline-block;*/
+}
+
+#menu
+{
+    background-color: #FFAAAA;
+    width: 100px;
+    height: 400px;
+    float: left;
+    /*display: inline-block;*/
+}
+
+#pied_de_page
+{
+    background-color: #558855;
+    width: 600px;
+    height: 50px;
+    clear: both;
+}
