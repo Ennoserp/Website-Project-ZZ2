@@ -1,9 +1,26 @@
+a:visited{
+    color: dodgerblue;
+}
+
+
 #authentification
 {
+    text-align: center;
     background-color: #8A5D1D;
     width: 30%;
     height: 175px;
     float: left;
+}
+
+body
+{
+    background-color: #333;
+}
+
+#page
+{
+    margin:auto;
+    max-width: 1200px;
 }
 
 #panier
@@ -19,6 +36,12 @@
     background-color: #EAE5DF;
     width: 70%;
     float: left;
+}
+
+#panier img
+{
+    width: 40%;
+    height: auto;;
 }
 
 #titre
@@ -51,7 +74,17 @@
     height: 30%;
 }
 
-@media screen and (max-width: 580px) {
+
+
+#form input{
+    width: 50%;
+    margin-bottom: 10px;
+}
+#connexion
+{
+    width: 10px;
+}
+@media screen and (max-width: 576px) {
     #titre
     {
         width: 100%;
@@ -73,9 +106,15 @@
         float: bottom;
     }
 
+    #contenu
+    {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 960px) {
 }
 /*
-@media screen and (min-width: 960px) {
     #titre
     {
         margin-left: 10%;
