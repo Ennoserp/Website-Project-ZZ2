@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <div id="page">
     <link rel="stylesheet" href="projet.css" />
 
@@ -8,19 +10,30 @@
 
 
         <div id="authentification">
-            Connexion<br />
+            <em>Connexion</em>
+
             <div id="form">
-                <input type="text" name="identifiant" placeholder="Identifiant"/><br/>
+                Adresse mail<br>
+                <input type="text" name="email" placeholder="Adresse email"/><br/>Mot de passe<br>
                 <input type="password" name="pwd" placeholder="Mot de passe"/><br/>
                 <input type="submit" name="connexion" value="Connexion" id="connexion"/>
+                <input type="submit" name="inscription" value="Inscription" id="inscription"/>
             </div>
 
 
         </div>
 
         <div id="contenu">
+        <button id="retour" onclick="window.location.href='/Website-Project-ZZ2/vente_en_ligne/index.php'">Retour</button><br>
+
 
             <?php
+            $db = connexion_bd();
+            afficher_familles($db);
+            deconnexion_bd($db);
+
+
+            /*
                 //Connexion à la BDD
                 $db = mysqli_connect('localhost', 'root', '', 'vente_en_ligne') or die('Erreur SQL : '.mysqli_error($db));
                 $db ->query('SET NAMES UTF8');
@@ -46,17 +59,18 @@
 
                 //on ferme la connexion
                 mysqli_close($db);
+            */
             ?>
         </div>
 
 
 
-    <div id="panier">Votre panier
-        <a href="img/panier.gif"></a>
+    <div id="panier">
+        <img src="img/panier.gif" id="panierpng"> Votre panier</img>
     </div>
 
 
     <div id="pied_de_page">
-        <p>TOPModellisme.com est enregistré au numéro 123456789</p>
+        <p id="pdp">TOPModellisme.com est enregistré au R.C.S. sous le numéro 1234567890<br>13 avenue du Pré de la Reine</p>
     </div>
 </div>
