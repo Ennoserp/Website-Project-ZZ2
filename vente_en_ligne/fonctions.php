@@ -19,10 +19,7 @@
             echo '<div class="type_article">';
             echo '<img src="img_familles/'.$data['image'].'" />';
             echo '<br />';
-            echo '<a href="#" title="'.$data['libelle'].'"';
-            echo '<p>';
-            echo $data['libelle'];
-            echo '</p>';
+            echo '<a href="index.php?famille='.$data['id'].'">'.$data['libelle'].'</a>';
             echo '</a>';
 
             echo '</div>';
