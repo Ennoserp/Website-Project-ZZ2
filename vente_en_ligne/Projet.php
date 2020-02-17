@@ -5,7 +5,7 @@
 
     <div id="titre">
         <div id="img_titre"><img src="img/logo_200px.gif"/></div>
-        <div id="titres"> Leader du modélisme en ligne UPDATED</div>
+        <div id="titres"> Leader du modélisme en ligne UPDATING</div>
     </div>
 
 
@@ -24,13 +24,21 @@
         </div>
 
         <div id="contenu">
-        <button id="retour" onclick="window.location.href='/Website-Project-ZZ2/vente_en_ligne/index.php'">Retour</button><br>
+
 
 
             <?php
             $db = connexion_bd();
-            afficher_familles($db);
+
+            if(isset($_GET['famille'])==true){
+                echo '<button id="retour"><a href="/Website-Project-ZZ2/vente_en_ligne/index.php">Retour </a></button><br />';
+                afficher_items($_GET['famille'],$db);
+            }
+            else {
+                afficher_familles($db);
+            }
             deconnexion_bd($db);
+
 
 
             /*

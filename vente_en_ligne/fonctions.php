@@ -26,6 +26,24 @@
         }
     }
 
+
+    function afficher_items($famille,$db)
+    {
+        $sql ="SELECT libelle, image, prix_ttc FROM article WHERE id_famille='$famille'";
+        $result=$db->query($sql) or die('Erreur SQl : '.mysqli_error($db));
+            echo '<br />';
+            echo '<div>';
+            while($data = mysqli_fetch_array($result))
+            {
+                echo '		<div>';
+                echo '			$data["libelle"]." pour un prix de ".$data["prix_ttc"]';
+                echo '		</div>';
+            }
+            echo '</div>';
+
+    }
+
+
     function deconnexion_bd($db)
     {
         mysqli_close($db);
