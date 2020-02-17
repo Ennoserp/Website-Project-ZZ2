@@ -58,6 +58,7 @@ body
     width: 70%;
     float: left;
     height: 500px;
+    overflow: auto;
 }
 
 #titres
@@ -92,17 +93,107 @@ body
     text-align: center;
 }
 
+.article
+{
+    display: inline-block;
+    float: left;
+}
+
+#prix
+{
+    color: #861825;
+    font-weight: bold;
+    display: inline-block;
+}
+
+#commande
+{
+    float: left;
+}
+
+.myButton a{
+    color:white;
+}
+
+.myButton {
+
+    display: inline-block;
+    font-family: 'Eras', "Trebuchet MS", serif;
+    margin:5px 10px 5px 10px;
+    -moz-box-shadow: 0px 10px 9px -7px #404242;
+    -webkit-box-shadow: 0px 10px 9px -7px #404242;
+    box-shadow: 0px 10px 9px -7px #404242;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ff5e7e), color-stop(1, #780000));
+    background:-moz-linear-gradient(top, #ff5e7e 5%, #780000 100%);
+    background:-webkit-linear-gradient(top, #ff5e7e 5%, #780000 100%);
+    background:-o-linear-gradient(top, #ff5e7e 5%, #780000 100%);
+    background:-ms-linear-gradient(top, #ff5e7e 5%, #780000 100%);
+    background:linear-gradient(to bottom, #ff5e7e 5%, #780000 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5e7e', endColorstr='#780000',GradientType=0);
+    background-color:#ff5e7e;
+    -moz-border-radius:40px;
+    -webkit-border-radius:40px;
+    border-radius:40px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:14px;
+    padding:3px 10px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #4d484d;
+}
+
+.myButton:hover {
+
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #780000), color-stop(1, #ff5e7e));
+    background:-moz-linear-gradient(top, #780000 5%, #ff5e7e 100%);
+    background:-webkit-linear-gradient(top, #780000 5%, #ff5e7e 100%);
+    background:-o-linear-gradient(top, #780000 5%, #ff5e7e 100%);
+    background:-ms-linear-gradient(top, #780000 5%, #ff5e7e 100%);
+    background:linear-gradient(to bottom, #780000 5%, #ff5e7e 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#780000', endColorstr='#ff5e7e',GradientType=0);
+    background-color:#780000;
+}
+
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+#desc
+{
+    color: gray;
+}
+
 .type_article
+{
+    display: inline-block;
+    margin: 10px;
+    width: 45%;
+    border: 2px solid #8A5D1D;
+    background-color: white;
+}
+
+.type_article img
+{
+    display: inline-block;
+    text-align: center;
+    margin: 5px;
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+}
+
+.type_famille
 {
     display: inline-block;
     text-align: center;
     margin: 5px;
     border: 2px solid #8A5D1D;
     background-color: white;
-    
 }
 
-.type_article img
+.type_famille img
 {
     display: inline-block;
     text-align: center;

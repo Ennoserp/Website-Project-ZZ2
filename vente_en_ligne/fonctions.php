@@ -16,7 +16,7 @@
         //On fait une boucle pour lire chaque enregistrement
         while($data = mysqli_fetch_array($result))
         {
-            echo '<div class="type_article">';
+            echo '<div class="type_famille">';
             echo '<img src="img_familles/'.$data['image'].'" />';
             echo '<br />';
             echo '<a href="index.php?famille='.$data['id'].'">'.$data['libelle'].'</a>';
@@ -29,20 +29,41 @@
 
     function afficher_items($famille,$db)
     {
-        $sql ="SELECT libelle, image, prix_ttc FROM article WHERE id_famille='$famille'";
+        $sql ="SELECT * FROM article WHERE id_famille='$famille'";
         $result=$db->query($sql) or die('Erreur SQl : '.mysqli_error($db));
             echo '<br />';
-            echo '<div>';
             while($data = mysqli_fetch_array($result))
             {
-                echo '		<div>';
-                echo '			$data["libelle"]." pour un prix de ".$data["prix_ttc"]';
-                echo '		</div>';
+                echo '<div class="type_article">';
+                echo '    <div class="article"> <img src="img_articles/'.$data['image'].'" /></div>';
+                echo '    </br><div id="libelle">'.$data["libelle"]."</div>";
+                echo '    <div id="desc">'.$data["detail"]."</div>";
+                echo '    <div id ="commande">';
+                echo '        <div id="prix">'.$data["prix_ttc"]."€ </div>";
+                echo '        <div class="myButton"><a href="#">Ajouter au panier</a></div>';
+                echo '    </div>';
+                echo '</div>';
             }
-            echo '</div>';
 
     }
 
+    function ajout_article_panier($article, $db){
+        $sql ="SELECT * FROM article WHERE id_famille='$article'";
+        $result=$db->query($sql) or die('Erreur SQl : '.mysqli_error($db));
+        afficher_panier($db);
+    }
+
+    function afficher_panier($db)
+    {
+        echo 'afficher_panier()';
+    }
+
+    function vider_panier($db)
+    {
+        echo 'PANIER VIDÉ<br />';
+        $sql ="DELETE FROM panier_article";
+        $result=$db->query($sql) or die('Erreur SQl : '.mysqli_error($db));
+    }
 
     function deconnexion_bd($db)
     {
