@@ -32,6 +32,7 @@
             vider_panier($db);
         }
 
+
         if(isset($_GET['famille'])==true){
             echo '<div class="myButton"><a href="/Website-Project-ZZ2/vente_en_ligne/index.php">Retour</a></div><br />';
             afficher_items($_GET['famille'],$db);
