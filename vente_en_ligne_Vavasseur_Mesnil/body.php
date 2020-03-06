@@ -3,9 +3,9 @@
 <div id="page">
    
 
-    <div id="titre">
+    <div id="div-titre">
         <div id="img_titre"><img src="img/logo_200px.gif"/></div>
-        <div id="titres">Leader du modélisme en ligne</div>
+        <div id="titre">Leader du modélisme <br />en ligne</div>
     </div>
 
 
@@ -35,7 +35,7 @@
 
 
         if(isset($_GET['famille'])==true){
-            echo '<div class="myButton"><a href="/Website-Project-ZZ2/vente_en_ligne_Vavasseur_Mesnil/index.php">Retour</a></div><br />';
+            echo '<div class="myButton"><a href="index.php">Retour</a></div><br />';
             afficher_items($_GET['famille'],$db);
 
             if(isset($_GET['commander'])==true)

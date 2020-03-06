@@ -75,7 +75,7 @@
             $res_qte = mysqli_fetch_array($db->query($qte));
             $nb = $res_qte[0] + 1;
 
-            $ajout = "UPDATE panier_article SET quantite = '$nb'";
+            $ajout = "UPDATE panier_article SET quantite = '$nb' WHERE id_article='$article'";
             $res_ajout=$db->query($ajout) or die('Erreur SQl : '.mysqli_error($db));
         }
     }
@@ -88,7 +88,6 @@
         $result = $db->query($sql) or die('Erreur SQl : '.mysqli_error($db));
 
         echo '<div class="articles_panier">';
-        echo    '_________________________';
 
         if(false)
         {
@@ -108,7 +107,6 @@
                 echo     '</div>';
             }
 
-            echo    '_________________________';
 
             echo '</div>';
             echo 'TOTAL : '.$prix_total.' €';
