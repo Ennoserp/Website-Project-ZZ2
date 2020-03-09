@@ -1,8 +1,6 @@
 <?php
 
-<html lang="fr"><
+<html lang="fr">
 
 
-
-
-/html>
+</html>

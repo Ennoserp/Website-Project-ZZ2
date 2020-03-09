@@ -1,1 +1,1 @@
-alert("/!\\ Virus détecté /!\\ ");
+//alert("/!\\ Virus détecté /!\\ ");
