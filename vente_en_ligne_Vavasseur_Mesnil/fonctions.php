@@ -103,7 +103,7 @@
 
         if($data == null)
         {
-            echo '<p>Votre panier est vide</p>';
+            echo '<p class="libelle_panier">Votre panier est vide</p>';
             echo '</div>';
         }
         else
@@ -112,16 +112,15 @@
             {
                 $somme = $data['quantite']*$data['prix_ttc'];
                 $prix_total += $somme;
-                echo     '<div class="id_article_panier">';
                 echo        '<div class="libelle_panier">'.$data['libelle'].'</div>';
                 echo        '<div class="prix_panier">'.$data['quantite'].' x '.$data['prix_ttc'].' = '.$somme.' €</div>';
-                echo     '</div>';
             }
             while ($data = mysqli_fetch_array($result));
 
-
             echo '</div>';
+            echo '<div class="prix_panier">';
             echo 'TOTAL : '.$prix_total.' €';
+            echo '</div>';
         }
 
     }
