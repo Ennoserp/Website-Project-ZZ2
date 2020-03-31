@@ -63,7 +63,7 @@
 
 
     <div id="pied_de_page"><!-- pied de page indiquant les coordonnées du vendeur -->
-        <p id="pdp">TOPModellisme.com est enregistré au R.C.S. sous le numéro 1234567890<br />13 avenue du Pré de la Reine</p>
+        <p id="pdp">TOPModellisme.com est enregistré au R.C.S. sous le numéro 1234567890<br />13 avenue du Pré de la Reine - 75007 PARIS</p>
     </div>
 </div>
 
