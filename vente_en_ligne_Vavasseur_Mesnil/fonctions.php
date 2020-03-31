@@ -18,11 +18,9 @@
         while($data = mysqli_fetch_array($result))
         {
             echo '<div class="type_famille">';
-            echo '<img src="img_familles/'.$data['image'].'" />';
-            echo '<br />';
-            echo '<a href="index.php?famille='.$data['id'].'">'.$data['libelle'].'</a>';
-            echo '</a>';
-
+            echo '  <img src="img_familles/'.$data['image'].'" />';
+            echo '  <br />';
+            echo '  <a href="index.php?famille='.$data['id'].'">'.$data['libelle'].'</a>';
             echo '</div>';
         }
     }
@@ -37,14 +35,25 @@
         while($data = mysqli_fetch_array($result))
         {
             echo '<div class="type_article">';
-            echo '    <div class="article"> <img src="img_articles/'.$data['image'].'" /></div>';
-            echo '    </br><div id="libelle">'.$data["libelle"]."</div>";
-            echo '    <div id="desc">'.$data["detail"]."</div>";
-            echo '    <div id ="commande">';
-            echo '        <div id="prix">'.$data["prix_ttc"]."€ </div>";
-            echo '        <div class="myButton"><a href="index.php?famille='.$data['id_famille'].'&article='.$data['id'].'">Ajouter au panier</a></div>';
-            echo '    </div>';
+            echo '  <table>';
+            echo '      <tr>';
+            echo '          <td>';
+            echo '          <div class="article_article"><img src="img_articles/'.$data['image'].'" /></div>';
+            echo '          </td>';
+            echo '          <td>';
+            echo '          </br><div id="libelle">'.$data["libelle"]."</div>";
+            echo '          <div id="desc">'.$data["detail"]."</div>";
+            echo '          <div id ="commande">';
+            echo '              <table><tr><td>';
+            echo '                  <div id="prix">'.$data["prix_ttc"]."€ </div></td>";
+            echo '                  <td><div class="myButton"><a href="index.php?famille='.$data['id_famille'].'&article='.$data['id'].'">Ajouter au panier</a></div>';
+            echo '              </td></tr></table>';
+            echo '          </div>';
+            echo '          <td>';
+            echo '      </tr>';
+            echo '  </table>';
             echo '</div>';
+           
             $article = $data['id'];
         }
         if(isset($_GET['article'])!=0)
@@ -62,10 +71,12 @@
 
         $count = "SELECT COUNT(*) FROM panier_article WHERE id_article='$article' AND id_panier='1'";
         $res_count = mysqli_fetch_array($db->query($count));
-
         if ($res_count[0] == 0)
         {
-            $sql = "INSERT INTO panier_article VALUES('1',$article,'1',$data[prix_ttc],'3.0','4.0')";
+            $tva = "SELECT taux FROM article LEFT JOIN tva ON article.id_tva = tva.id WHERE article.id = 40";
+            $res_tva = mysqli_fetch_array($db->query($tva));
+            $prix_ht = $data['prix_ttc'] / (1 + $res_tva['taux']/100);
+            $sql = "INSERT INTO panier_article VALUES('1', $article, '1', $prix_ht, $data[prix_ttc] - $prix_ht, $data[prix_ttc])";
             $result = $db->query($sql) or die('Erreur SQl : '.mysqli_error($db));
         }
 
@@ -88,24 +99,25 @@
         $result = $db->query($sql) or die('Erreur SQl : '.mysqli_error($db));
 
         echo '<div class="articles_panier">';
+        $data = mysqli_fetch_array($result);
 
-        if(false)
+        if($data == null)
         {
             echo '<p>Votre panier est vide</p>';
             echo '</div>';
-
         }
         else
         {
-            while ($data = mysqli_fetch_array($result))
+            do
             {
                 $somme = $data['quantite']*$data['prix_ttc'];
                 $prix_total += $somme;
                 echo     '<div class="id_article_panier">';
                 echo        '<div class="libelle_panier">'.$data['libelle'].'</div>';
-                echo        '<div class="">'.$data['quantite'].' x '.$data['prix_ttc'].' = '.$somme.' €</div>';
+                echo        '<div class="prix_panier">'.$data['quantite'].' x '.$data['prix_ttc'].' = '.$somme.' €</div>';
                 echo     '</div>';
             }
+            while ($data = mysqli_fetch_array($result));
 
 
             echo '</div>';

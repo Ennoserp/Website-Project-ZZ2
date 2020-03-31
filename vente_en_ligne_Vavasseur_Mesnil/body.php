@@ -3,23 +3,21 @@
 <div id="page">
    
 
-    <div id="div-titre">
-        <div id="img_titre"><img src="img/logo_200px.gif"/></div>
-        <div id="titre">Leader du modélisme <br />en ligne</div>
+    <div id="en_tete">
+        <div id="titre_img"><img src="img/logo_200px.gif"/></div>
+        <div id="titre">Le leader du modélisme en ligne</div>
     </div>
 
 
     <div id="authentification">
 
         <div id="form">
-            Adresse mail<br />
-            <input type="text" name="email" placeholder="Adresse email"/><br />Mot de passe<br />
-            <input type="password" name="pwd" placeholder="Mot de passe"/><br />
-            <div class="myButton"><a href="#">Se connecter</a></div>
-            <div class="myButton"><a href="#">Créer un compte</a></div>
+                Adresse email<br />
+                <input type="text" name="email" placeholder="Adresse email"/><br />Mot de passe<br />
+                <input type="password" name="pwd" placeholder="Mot de passe"/><br />
+                <div class="myButton"><a href="#">Se connecter</a></div>
+                <div class="myButton"><a href="#">Créer un compte</a></div>
         </div>
-
-
     </div>
 
     <div id="contenu">
@@ -51,12 +49,14 @@
     </div>
 
     <div id="panier">
-        <img src="img/panier.gif" id="panierpng"> Votre panier</img>
+        <div class="panier_titre">
+            <img src="img/panier.gif" id="panier_png"></img>Votre panier
+        </div>
         <?php afficher_panier($db) ?>
 
-        <div>
-            <div class="myButton boutons_panier" name="vider"><a href="index.php?vider=true">Vider panier</a></div>
-            <div class="myButton boutons_panier">Commander</div>
+        <div id="boutons_panier">
+            <div class="myButton" name="vider"><a href="index.php?vider=true">Vider panier</a></div>
+            <div class="myButton">Commander</div>
         </div>
     </div>
 
