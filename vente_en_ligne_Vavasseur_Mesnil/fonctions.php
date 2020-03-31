@@ -71,7 +71,7 @@
 
         $count = "SELECT COUNT(*) FROM panier_article WHERE id_article='$article' AND id_panier='1'";
         $res_count = mysqli_fetch_array($db->query($count));
-        if ($res_count[0] == 0)
+        if ($res_count[0] == 0) // Si l'article n'est pas dans le panier, on crée une ligne correspondante dans la BDD après avoir calculé son prix TTC
         {
             $tva = "SELECT taux FROM article LEFT JOIN tva ON article.id_tva = tva.id WHERE article.id = 40";
             $res_tva = mysqli_fetch_array($db->query($tva));
@@ -80,7 +80,7 @@
             $result = $db->query($sql) or die('Erreur SQl : '.mysqli_error($db));
         }
 
-        else
+        else // Sinon, on incrémente la quantité de l'article dans le panier
         {
             $qte = "SELECT quantite FROM panier_article WHERE id_article='$article'";
             $res_qte = mysqli_fetch_array($db->query($qte));
@@ -101,12 +101,12 @@
         echo '<div class="articles_panier">';
         $data = mysqli_fetch_array($result);
 
-        if($data == null)
+        if($data == null) // S'il n'y a aucun article dans le panier, on en informe le client
         {
             echo '<p class="libelle_panier">Votre panier est vide</p>';
             echo '</div>';
         }
-        else
+        else // Sinon, on  récupère le nom et le prix de chaque article présent dans le panier puis on les affiche
         {
             do
             {
@@ -122,7 +122,6 @@
             echo 'TOTAL : '.$prix_total.' €';
             echo '</div>';
         }
-
     }
 
 
