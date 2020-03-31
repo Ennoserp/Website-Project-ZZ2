@@ -133,11 +133,6 @@ body
     text-align: center;
 }
 
-.article
-{
-    display: inline-block;
-    float: left;
-}
 
 
 #prix
@@ -145,11 +140,6 @@ body
     color: #861825;
     font-weight: bold;
     display: inline-block;
-}
-
-#commande
-{
-    float: left;
 }
 
 .myButton a

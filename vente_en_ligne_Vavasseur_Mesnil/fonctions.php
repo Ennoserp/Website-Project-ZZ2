@@ -1,7 +1,7 @@
 <?php
 
 
-    function connexion_bd()
+    function connexion_bd()  //connnexion à la bd
     {
         $db = mysqli_connect('localhost', 'root', '', 'vente_en_ligne') or die('Erreur SQL : '.mysqli_error($db));
         $db ->query('SET NAMES UTF8');
@@ -9,7 +9,7 @@
     }
 
 
-    function afficher_familles($db)
+    function afficher_familles($db) //affichage des familles d'articles
     {
         $sql = 'SELECT * from famille order by ordre_affichage';
         $result = $db -> query($sql) or die('Erreur SQL : '.mysqli_error($db));
@@ -26,7 +26,7 @@
     }
 
 
-    function afficher_items($famille, $db)
+    function afficher_items($famille, $db)  //affichage d'une famille d'articles
     {
         $sql ="SELECT * FROM article WHERE id_famille='$famille'";
         $result = $db->query($sql) or die('Erreur SQl : '.mysqli_error($db));
@@ -63,7 +63,7 @@
     }
 
 
-    function ajout_article_panier($article, $db)
+    function ajout_article_panier($article, $db) //ajout d'un article dans le panier
     {
         $sql ="SELECT * FROM article WHERE id='$article'";
         $result = $db->query($sql) or die('Erreur SQl : '.mysqli_error($db));
@@ -73,9 +73,11 @@
         $res_count = mysqli_fetch_array($db->query($count));
         if ($res_count[0] == 0) // Si l'article n'est pas dans le panier, on crée une ligne correspondante dans la BDD après avoir calculé son prix TTC
         {
-            $tva = "SELECT taux FROM article LEFT JOIN tva ON article.id_tva = tva.id WHERE article.id = 40";
+            $tva = "SELECT taux FROM article LEFT JOIN tva ON article.id_tva = tva.id WHERE article.id = '$article'";
             $res_tva = mysqli_fetch_array($db->query($tva));
-            $prix_ht = $data['prix_ttc'] / (1 + $res_tva['taux']/100);
+
+            $prix_ht = $data['prix_ttc'] / (1 + $res_tva['taux']/100); //calcul du taux hots taxe
+
             $sql = "INSERT INTO panier_article VALUES('1', $article, '1', $prix_ht, $data[prix_ttc] - $prix_ht, $data[prix_ttc])";
             $result = $db->query($sql) or die('Erreur SQl : '.mysqli_error($db));
         }
@@ -92,7 +94,7 @@
     }
 
 
-    function afficher_panier($db)
+    function afficher_panier($db)   //affichage du panier
     {
         $prix_total = 0;
         $sql ="SELECT A.libelle, A.prix_ttc, PA.quantite FROM panier_article PA LEFT JOIN article A ON id_article = id WHERE id_panier='1'";
@@ -125,14 +127,14 @@
     }
 
 
-    function vider_panier($db)
+    function vider_panier($db) // pour vider la panier
     {
         $sql ="DELETE FROM panier_article";
         $result=$db->query($sql) or die('Erreur SQl : '.mysqli_error($db));
     }
 
 
-    function deconnexion_bd($db)
+    function deconnexion_bd($db) //déconnexion de la base de données
     {
         mysqli_close($db);
     }

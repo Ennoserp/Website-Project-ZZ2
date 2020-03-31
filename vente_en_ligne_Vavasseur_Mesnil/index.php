@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="style.css" />
         <link rel="icon" type="image/png" href="img/favicon.png" />
         <?php include("fonctions.php"); ?>
+        <!--développé par Jaël VAVASSEUR et Clément MESNIL-->
     </head>
 
     <body>
